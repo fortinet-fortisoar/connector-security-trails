@@ -1,0 +1,757 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Security Trails - 1.0.0",
+      "description": "SecurityTrails is a cybersecurity platform that provides domain and IP intelligence services. It offers tools for reconnaissance, asset discovery, and monitoring of digital footprints to enhance security assessments and investigations. Users can access information such as historical DNS records, WHOIS details, and other data related to domains and IP addresses.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Security",
+        "security-trails"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "c26f9b8e-4124-485d-a3c3-880ca2ac0a46",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Returns associated IPs for a company domain.",
+          "name": "Get Associated IPs",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ed2d60d0-eb65-42a1-88e8-be413c6a48e8",
+          "steps": [
+            {
+              "uuid": "ed2d60d0-eb65-42a1-88e8-be413c6a48e8",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "eba716ee-3ee6-4dd3-88d4-ac495c3a2bc3",
+                "title": "Security Trails: Get Associated IPs",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "e26004f6-a18e-448a-b8fe-2ca68ce72e47",
+              "@type": "WorkflowStep",
+              "name": "Get Associated IPs",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "domain": "google.com"
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_associated_ips",
+                "operationTitle": "Get Associated IPs",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "749d0c40-c26b-4794-ac64-067ac686fad3",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Associated IPs",
+              "sourceStep": "/api/3/workflow_steps/ed2d60d0-eb65-42a1-88e8-be413c6a48e8",
+              "targetStep": "/api/3/workflow_steps/e26004f6-a18e-448a-b8fe-2ca68ce72e47"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "9ac18555-bc97-4ac7-a57b-ef164885b73d",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Returns the current data about the given hostname,current statistics associated with a particular record.",
+          "name": "Get Domain Details",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/dcf1384f-bfc0-4657-9992-132965655aba",
+          "steps": [
+            {
+              "uuid": "dcf1384f-bfc0-4657-9992-132965655aba",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "d4d3a791-a2eb-4fc8-add8-b5a521a4550e",
+                "title": "Security Trails: Get Domain Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "4a460630-24d8-4186-82cb-0e2759c0bb85",
+              "@type": "WorkflowStep",
+              "name": "Get Domain Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "host": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_domain_details",
+                "operationTitle": "Get Domain Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "e7f449c9-718e-4b78-93bc-5c66c1d320f9",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Domain Details",
+              "sourceStep": "/api/3/workflow_steps/dcf1384f-bfc0-4657-9992-132965655aba",
+              "targetStep": "/api/3/workflow_steps/4a460630-24d8-4186-82cb-0e2759c0bb85"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "9660b0d5-2b29-4416-8de8-0c6a420ee510",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Returns child and sibling subdomains for a given hostname.",
+          "name": "Get Subdomain Details",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/cd347b12-7268-4beb-845f-390330a05d36",
+          "steps": [
+            {
+              "uuid": "cd347b12-7268-4beb-845f-390330a05d36",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "07cea9b1-6590-40db-8ca1-b36244130367",
+                "title": "Security Trails: Get Subdomain Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "3572f4c8-a83a-49c8-9a1b-4d644137ff48",
+              "@type": "WorkflowStep",
+              "name": "Get Subdomain Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "host": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_subdomain_details",
+                "operationTitle": "Get Subdomain Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "e6e1384d-854e-46d0-a488-84111d83ca88",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Subdomain Details",
+              "sourceStep": "/api/3/workflow_steps/cd347b12-7268-4beb-845f-390330a05d36",
+              "targetStep": "/api/3/workflow_steps/3572f4c8-a83a-49c8-9a1b-4d644137ff48"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "60b3b7fa-5c51-44a2-8b5e-372d56e3e122",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Returns tags for a given hostname.",
+          "name": "Get Domain Tags Details",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/57725d74-27a5-45ae-b448-af5239b857a9",
+          "steps": [
+            {
+              "uuid": "57725d74-27a5-45ae-b448-af5239b857a9",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "561801e3-13b6-411b-b6d2-b8a92c574d1c",
+                "title": "Security Trails: Get Domain Tags Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "69119e13-ce34-46ee-b6aa-a5f902963b9c",
+              "@type": "WorkflowStep",
+              "name": "Get Domain Tags Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "host": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_domain_tags_details",
+                "operationTitle": "Get Domain Tags Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "2bf27ff1-e2c8-4535-8029-d2b1c18cb5d7",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Domain Tags Details",
+              "sourceStep": "/api/3/workflow_steps/57725d74-27a5-45ae-b448-af5239b857a9",
+              "targetStep": "/api/3/workflow_steps/69119e13-ce34-46ee-b6aa-a5f902963b9c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "75e84871-70ec-4194-b8db-8d73c598ef83",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Returns the current WHOIS data about a given hostname with the stats merged together.",
+          "name": "Get Domain WHOIS Details",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ce714188-88dc-4c0f-8f04-38c2ec2e9ebc",
+          "steps": [
+            {
+              "uuid": "ce714188-88dc-4c0f-8f04-38c2ec2e9ebc",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "29e83db6-78b2-4802-8046-f704ae9cbdea",
+                "title": "Security Trails: Get Domain WHOIS Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "a87aa24c-48fc-4d37-a240-efe46ceed42b",
+              "@type": "WorkflowStep",
+              "name": "Get Domain WHOIS Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "host": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_domain_whois_details",
+                "operationTitle": "Get Domain WHOIS Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d3686002-f249-43dc-bdf0-4aa0c65c33a2",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Domain WHOIS Details",
+              "sourceStep": "/api/3/workflow_steps/ce714188-88dc-4c0f-8f04-38c2ec2e9ebc",
+              "targetStep": "/api/3/workflow_steps/a87aa24c-48fc-4d37-a240-efe46ceed42b"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "f648b0b9-7b97-4cb8-bf4f-e8ebba580780",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Find all domains that are related to a hostname you input.",
+          "name": "Get Associated Domains",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/838e4993-0110-42e4-9a5c-e07a16a14309",
+          "steps": [
+            {
+              "uuid": "838e4993-0110-42e4-9a5c-e07a16a14309",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "933d8587-7be8-4518-9057-df703e452a0d",
+                "title": "Security Trails: Get Associated Domains",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ef34a421-60a3-4e6c-92c4-0358970ba65d",
+              "@type": "WorkflowStep",
+              "name": "Get Associated Domains",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "host": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_associated_domains",
+                "operationTitle": "Get Associated Domains",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "1a9e671c-ca89-424d-bfc0-fd9b3a8c08a6",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Associated Domains",
+              "sourceStep": "/api/3/workflow_steps/838e4993-0110-42e4-9a5c-e07a16a14309",
+              "targetStep": "/api/3/workflow_steps/ef34a421-60a3-4e6c-92c4-0358970ba65d"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "fe29a764-e26d-4e82-9efa-8f9345941d7b",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Returns historical WHOIS information about the given domain.",
+          "name": "Get WHOIS History",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2ba0b9f3-28f6-4dc4-9c69-f4d24353afc1",
+          "steps": [
+            {
+              "uuid": "2ba0b9f3-28f6-4dc4-9c69-f4d24353afc1",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "d63829a7-08fd-4afd-8acb-d3a9e5c3400b",
+                "title": "Security Trails: Get WHOIS History",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "19d25031-dd3c-4f10-a856-ef5243a6535a",
+              "@type": "WorkflowStep",
+              "name": "Get WHOIS History",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "host": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_whois_history",
+                "operationTitle": "Get WHOIS History",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "064e90da-8ba7-4935-8cf5-646e7b775a47",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get WHOIS History",
+              "sourceStep": "/api/3/workflow_steps/2ba0b9f3-28f6-4dc4-9c69-f4d24353afc1",
+              "targetStep": "/api/3/workflow_steps/19d25031-dd3c-4f10-a856-ef5243a6535a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "4c9c4677-ff5e-47f5-aa86-5f6a5d9700cc",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Returns the neighbors in any given IP level range and essentially allows you to explore closeby IP addresses.",
+          "name": "Get IPs Neighbors",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d486cf24-bbae-4783-a1bb-e274dcd2d103",
+          "steps": [
+            {
+              "uuid": "d486cf24-bbae-4783-a1bb-e274dcd2d103",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "aabc836a-4af2-492f-a4e1-74e764df3d01",
+                "title": "Security Trails: Get IPs Neighbors",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "0910cd79-e878-4a4a-b4ea-746c3251df44",
+              "@type": "WorkflowStep",
+              "name": "Get IPs Neighbors",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "ip_address": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_ips_neighbors",
+                "operationTitle": "Get IPs Neighbors",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "e8de80b6-ac79-4ca0-9c24-b1126484df5f",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get IPs Neighbors",
+              "sourceStep": "/api/3/workflow_steps/d486cf24-bbae-4783-a1bb-e274dcd2d103",
+              "targetStep": "/api/3/workflow_steps/0910cd79-e878-4a4a-b4ea-746c3251df44"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "f3381bdf-2642-4a06-8723-928575145855",
+          "collection": "/api/3/workflow_collections/061a97dd-eb4b-4cbf-adfa-42da07bd5aed",
+          "triggerLimit": null,
+          "description": "Fetch current IP information for a single IPv4 address.",
+          "name": "Get Whois IPs",
+          "tag": "#Security Trails",
+          "recordTags": [
+            "Security",
+            "security-trails"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/37affbd5-f05d-4e0d-8cc2-dc7f0fb2eae2",
+          "steps": [
+            {
+              "uuid": "37affbd5-f05d-4e0d-8cc2-dc7f0fb2eae2",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "71a7d1a7-82f8-4765-9a28-210f04dbefe6",
+                "title": "Security Trails: Get Whois IPs",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "0dfe4b69-226f-4a01-98e7-dede286c4a80",
+              "@type": "WorkflowStep",
+              "name": "Get Whois IPs",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Security Trails",
+                "config": "''",
+                "params": {
+                  "ip_address": ""
+                },
+                "version": "1.0.0",
+                "connector": "security-trails",
+                "operation": "get_whois_ips",
+                "operationTitle": "Get Whois IPs",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "506da05c-82f1-4b65-8f4f-b91ebfeb0539",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Whois IPs",
+              "sourceStep": "/api/3/workflow_steps/37affbd5-f05d-4e0d-8cc2-dc7f0fb2eae2",
+              "targetStep": "/api/3/workflow_steps/0dfe4b69-226f-4a01-98e7-dede286c4a80"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
