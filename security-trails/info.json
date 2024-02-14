@@ -1,419 +1,452 @@
 {
-    "name": "security-trails",
-    "version": "1.0.0",
-    "label": "Security Trails",
-    "description": "SecurityTrails is a cybersecurity platform that provides domain and IP intelligence services. It offers tools for reconnaissance, asset discovery, and monitoring of digital footprints to enhance security assessments and investigations. Users can access information such as historical DNS records, WHOIS details, and other data related to domains and IP addresses.",
-    "publisher": "spryIQ.co",
-    "icon_small_name": "small.png",
-    "icon_large_name": "large.png",
-    "cs_compatible": true,
-    "cs_approved": false,
-    "category": "Threat Intelligence",
-    "help_online": "https://github.com/jitesh-spryiq/connector-security-trails/blob/develop/docs/SecurityTrailsConnectorDoc.md",
-    "configuration": {
-        "fields": [
-            {
-                "title": "Server URL",
-                "type": "text",
-                "name": "server_url",
-                "required": true,
-                "visible": true,
-                "editable": true,
-                "value": "",
-                "placeholder": "e.g: https://api.securitytrails.com or api.securitytrails.com",
-                "tooltip": "Specify the URL of the shadow-server server to connect and perform automated operations."
-            },
-            {
-                "title": "API key",
-                "type": "password",
-                "description": "Specify the API key to access the endpoint to which you will connect and perform the automated operations.",
-                "tooltip": "Specify the API key to access the endpoint to which you will connect and perform the automated operations.",
-                "name": "api_key",
-                "required": true,
-                "visible": true,
-                "editable": true,
-                "value": "",
-                "placeholder": "e.g:D-l8D4uGEkj0I6u9hco-ONXLn0"
-            }
-        ]
-    },
-    "operations": [
-        {
-            "title": "Get Associated IPs",
-            "operation": "get_associated_ips",
-            "description": "Returns associated IPs for a company domain.",
-            "annotation": "get_associated_ips",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "Domain",
-                    "type": "text",
-                    "name": "domain",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "google.com",
-                    "placeholder": "e.g:google.com",
-                    "tooltip": "Specify the Domain."
-                }
-            ],
-            "output_schema": [
-                {
-                    "alexa_rank": "",
-                    "whois": {
-                        "createdDate": "",
-                        "registrar": "",
-                        "expiresDate": ""
-                    },
-                    "mail_provider": [],
-                    "hostname": "",
-                    "host_provider": [],
-                    "computed": {
-                        "company_name": ""
-                    }
-                }
-            ]
-        },
-        {
-            "title": "Get Domain Details",
-            "operation": "get_domain_details",
-            "description": "Returns the current data about the given hostname,current statistics associated with a particular record.",
-            "annotation": "get_domain_details",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "Host",
-                    "type": "text",
-                    "name": "host",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:google.com",
-                    "tooltip": "Specify the Host."
-                }
-            ],
-            "output_schema": [
-                {
-                      "alexa_rank": "",
-                      "apex_domain": "",
-                      "current_dns": {
-                        "a": {
-                          "first_seen": "",
-                          "values": [
-                            {
-                              "h": "",
-                              "ip": "",
-                              "ip_count": "",
-                              "ip_organization": ""
-                            }
-                          ]
-                        },
-                        "aaaa": {},
-                        "mx": {
-                          "first_seen": "",
-                          "values": [
-                            {
-                              "hostname": "",
-                              "hostname_count": "",
-                              "hostname_organization": "",
-                              "priority": ""
-                            },
-                            {
-                              "hostname": "",
-                              "hostname_count": "",
-                              "hostname_organization": "",
-                              "priority": ""
-                            }
-                          ]
-                        },
-                        "ns": {
-                          "first_seen": "",
-                          "values": [
-                            {
-                              "nameserver": "",
-                              "nameserver_count": "",
-                              "nameserver_organization": ""
-                            }
-                          ]
-                        },
-                        "soa": {
-                          "first_seen": "",
-                          "values": [
-                            {
-                              "email": "",
-                              "email_count": "",
-                              "ttl": ""
-                            }
-                          ]
-                        },
-                        "txt": {
-                          "first_seen": "",
-                          "values": [
-                            {
-                              "value": ""
-                            }
-                          ]
-                        }
-                      },
-                      "endpoint": "",
-                      "hostname": "",
-                      "subdomain_count": ""
-                }
-            ]
-        },
+  "name": "security-trails",
+  "version": "1.0.0",
+  "label": "SecurityTrails",
+  "description": "SecurityTrails is a cybersecurity platform that provides domain and IP intelligence services. It offers tools for reconnaissance, asset discovery, and monitoring of digital footprints to enhance security assessments and investigations. Users can access information such as historical DNS records, WHOIS details, and other data related to domains and IP addresses.",
+  "publisher": "spryIQ.co",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "cs_compatible": true,
+  "cs_approved": false,
+  "category": "Threat Intelligence",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-security-trails/blob/release/1.0.0/docs/SecurityTrailsConnectorDoc.md",
+  "configuration": {
+    "fields": [
       {
-            "title": "Get Subdomain Details",
-            "operation": "get_subdomain_details",
-            "description": "Returns child and sibling subdomains for a given hostname.",
-            "annotation": "get_subdomain_details",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "Host",
-                    "type": "text",
-                    "name": "host",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:google.com",
-                    "tooltip": "Specify the Host."
-                }
-            ],
-            "output_schema": [
-                {
-                  "endpoint": "",
-                  "meta": {
-                    "limit_reached": ""
-                  },
-                  "subdomain_count": "",
-                  "subdomains": []
-                }
-            ]
-        },
-      {
-            "title": "Get Domain Tags Details",
-            "operation": "get_domain_tags_details",
-            "description": "Returns tags for a given hostname.",
-            "annotation": "get_domain_tags_details",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "Host",
-                    "type": "text",
-                    "name": "host",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:google.com",
-                    "tooltip": "Specify the Host."
-                }
-            ],
-            "output_schema": [
-                {
-                  "endpoint": "",
-                  "tags": []
-                }
-            ]
-        },
-      {
-            "title": "Get Domain WHOIS Details",
-            "operation": "get_domain_whois_details",
-            "description": "Returns the current WHOIS data about a given hostname with the stats merged together.",
-            "annotation": "get_domain_whois_details",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "Host",
-                    "type": "text",
-                    "name": "host",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:google.com",
-                    "tooltip": "Specify the Host."
-                }
-            ],
-            "output_schema": [
-                {
-                  "result": {
-                  "items": [
-                    {
-                      "ended": "",
-                      "nameServers": [],
-                      "contact": [],
-                      "createdDate": "",
-                      "expiresDate": "",
-                      "updatedDate": "",
-                      "registrarName": "",
-                      "domain": "",
-                      "tld": "",
-                      "started": "",
-                      "status": [],
-                      "contactEmail": ""
-                    },
-                    {
-                      "status": [],
-                      "domain": "",
-                      "createdDate": "",
-                      "nameServers": [],
-                      "contact": [],
-                      "updatedDate": "",
-                      "tld": "",
-                      "registrarName": "",
-                      "expiresDate": "",
-                      "ended": "",
-                      "started": ""
-                    }
-                  ],
-                  "count": ""
-                },
-                "endpoint": ""
-                }
-            ]
+        "title": "Server URL",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "",
+        "placeholder": "e.g: https://api.securitytrails.com or api.securitytrails.com",
+        "tooltip": "Specify the URL of the shadow-server server to connect and perform automated operations."
       },
       {
-            "title": "Get Associated Domains",
-            "operation": "get_associated_domains",
-            "description": "Find all domains that are related to a hostname you input.",
-            "annotation": "get_associated_domains",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "Host",
-                    "type": "text",
-                    "name": "host",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:google.com",
-                    "tooltip": "Specify the Host."
-                }
-            ],
-            "output_schema": [
-                {
-                   "records": [
-                      {
-                        "alexa_rank": "",
-                        "whois": {
-                          "createdDate": "",
-                          "registrar": "",
-                          "expiresDate": ""
-                        },
-                        "mail_provider": [],
-                        "hostname": "",
-                        "host_provider": [],
-                        "computed": {
-                          "company_name": ""
-                        }
-                      }
-                    ],
-                    "meta": {
-                      "max_page": "",
-                      "total_pages": "",
-                      "query": "",
-                      "page": ""
-                    },
-                    "record_count": "",
-                    "endpoint": ""
-                }
-            ]
+        "title": "API key",
+        "type": "password",
+        "description": "Specify the API key to access the endpoint to which you will connect and perform the automated operations.",
+        "tooltip": "Specify the API key to access the endpoint to which you will connect and perform the automated operations.",
+        "name": "api_key",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "value": "",
+        "placeholder": "e.g:D-l8D4uGEkj0I6u9hco-ONXLn0"
       },
       {
-            "title": "Get WHOIS History",
-            "operation": "get_whois_history",
-            "description": "Returns historical WHOIS information about the given domain.",
-            "annotation": "get_whois_history",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "Host",
-                    "type": "text",
-                    "name": "host",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:google.com",
-                    "tooltip": "Specify the Host."
-                }
-            ],
-            "output_schema": [
-                {
-                   "endpoint": "",
-                    "result": {
-                      "count": "",
-                      "items": []
-                    }
-                }
-            ]
-      },
-      {
-            "title": "Get IPs Neighbors",
-            "operation": "get_ips_neighbors",
-            "description": "Returns the neighbors in any given IP level range and essentially allows you to explore closeby IP addresses.",
-            "annotation": "get_ips_neighbors",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "IP Address",
-                    "type": "text",
-                    "name": "ip_address",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:8.8.8.8",
-                    "tooltip": "Specify the IP Address."
-                }
-            ],
-            "output_schema": [
-                {
-                   "blocks": [
-                    {
-                      "active_egress": "",
-                      "hostnames": [],
-                      "ip": "",
-                      "ports": [],
-                      "sites": ""
-                    }
-                  ],
-                  "endpoint": ""
-                    }
-            ]
-      },
-      {
-            "title": "Get Whois IPs",
-            "operation": "get_whois_ips",
-            "description": "Fetch current IP information for a single IPv4 address.",
-            "annotation": "get_whois_ips",
-            "category": "investigation",
-            "parameters": [
-                {
-                    "title": "IP Address",
-                    "type": "text",
-                    "name": "ip_address",
-                    "required": true,
-                    "visible": true,
-                    "editable": true,
-                    "value": "",
-                    "placeholder": "e.g:8.8.8.8",
-                    "tooltip": "Specify the IP Address."
-                }
-            ],
-            "output_schema": [
-                {
-                   "endpoint": "",
-                    "result": {
-                      "count": "",
-                      "items": []
-                    }
-                }
-            ]
+        "title": "Verify SSL",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set to True.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true
       }
     ]
+  },
+  "operations": [
+    {
+      "title": "Get Associated IPs",
+      "operation": "get_associated_ips",
+      "description": "Retrieve the IP addresses associated with a company's domain.",
+      "annotation": "get_associated_ips",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "Domain",
+          "type": "text",
+          "name": "domain",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "google.com",
+          "placeholder": "e.g:google.com",
+          "tooltip": "Specify the domain that you are requesting",
+          "description": "Specify the domain that you are requesting"
+        }
+      ],
+      "output_schema": [
+        {
+          "alexa_rank": "",
+          "whois": {
+            "createdDate": "",
+            "registrar": "",
+            "expiresDate": ""
+          },
+          "mail_provider": [],
+          "hostname": "",
+          "host_provider": [],
+          "computed": {
+            "company_name": ""
+          }
+        }
+      ]
+    },
+    {
+      "title": "Get Domain Details",
+      "operation": "get_domain_details",
+      "description": "Provides the current information regarding the specified hostname, including the current statistics linked to a specific record",
+      "annotation": "get_domain_details",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "Hostname",
+          "type": "text",
+          "name": "host",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:google.com",
+          "tooltip": "Specify the hostname that you are requesting the domain details",
+          "description": "Specify the hostname that you are requesting the domain details"
+        }
+      ],
+      "output_schema": [
+        {
+          "alexa_rank": "",
+          "apex_domain": "",
+          "current_dns": {
+            "a": {
+              "first_seen": "",
+              "values": [
+                {
+                  "h": "",
+                  "ip": "",
+                  "ip_count": "",
+                  "ip_organization": ""
+                }
+              ]
+            },
+            "aaaa": {},
+            "mx": {
+              "first_seen": "",
+              "values": [
+                {
+                  "hostname": "",
+                  "hostname_count": "",
+                  "hostname_organization": "",
+                  "priority": ""
+                },
+                {
+                  "hostname": "",
+                  "hostname_count": "",
+                  "hostname_organization": "",
+                  "priority": ""
+                }
+              ]
+            },
+            "ns": {
+              "first_seen": "",
+              "values": [
+                {
+                  "nameserver": "",
+                  "nameserver_count": "",
+                  "nameserver_organization": ""
+                }
+              ]
+            },
+            "soa": {
+              "first_seen": "",
+              "values": [
+                {
+                  "email": "",
+                  "email_count": "",
+                  "ttl": ""
+                }
+              ]
+            },
+            "txt": {
+              "first_seen": "",
+              "values": [
+                {
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "endpoint": "",
+          "hostname": "",
+          "subdomain_count": ""
+        }
+      ]
+    },
+    {
+      "title": "Get Subdomain Details",
+      "operation": "get_subdomain_details",
+      "description": "Provides child and sibling subdomains for a specified hostname.",
+      "annotation": "get_subdomain_details",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "Hostname",
+          "type": "text",
+          "name": "host",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:google.com",
+          "tooltip": "Specify the hostname that you are requesting the child and sibling subdomains",
+          "description": "Specify the hostname that you are requesting the child and sibling subdomains"
+        },
+        {
+          "title": "Children Only",
+          "type": "checkbox",
+          "name": "children_only",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "If you select this option, only children subdomains will be returned",
+          "description": "If you select this option, only children subdomains will be returned"
+        },
+        {
+          "title": "Include Inactive",
+          "type": "checkbox",
+          "name": "include_inactive",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "If you select this option, include domains that don't have active DNS records",
+          "description": "If you select this option, include domains that don't have active DNS records"
+        }
+      ],
+      "output_schema": [
+        {
+          "endpoint": "",
+          "meta": {
+            "limit_reached": ""
+          },
+          "subdomain_count": "",
+          "subdomains": []
+        }
+      ]
+    },
+    {
+      "title": "Get Domain Tags Details",
+      "operation": "get_domain_tags_details",
+      "description": "Provides tags associated with a specified hostname",
+      "annotation": "get_domain_tags_details",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "Hostname",
+          "type": "text",
+          "name": "host",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:google.com",
+          "tooltip": "Specify the hostname that you are requesting the domain tags details",
+          "description": "Specify the hostname that you are requesting the domain tags details"
+        }
+      ],
+      "output_schema": [
+        {
+          "endpoint": "",
+          "tags": []
+        }
+      ]
+    },
+
+    {
+      "title": "Get Domain WHOIS Details",
+      "operation": "get_domain_whois_details",
+      "description": "Returns the current WHOIS data about a given hostname with the stats merged together",
+      "annotation": "get_domain_whois_details",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "Hostname",
+          "type": "text",
+          "name": "host",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:google.com",
+          "tooltip": "Specify the hostname that you are requesting the domain WHOIS details",
+          "description": "Specify the hostname that you are requesting the domain WHOIS details"
+        }
+      ],
+      "output_schema": [
+        {
+          "result": {
+            "items": [
+              {
+                "ended": "",
+                "nameServers": [],
+                "contact": [],
+                "createdDate": "",
+                "expiresDate": "",
+                "updatedDate": "",
+                "registrarName": "",
+                "domain": "",
+                "tld": "",
+                "started": "",
+                "status": [],
+                "contactEmail": ""
+              },
+              {
+                "status": [],
+                "domain": "",
+                "createdDate": "",
+                "nameServers": [],
+                "contact": [],
+                "updatedDate": "",
+                "tld": "",
+                "registrarName": "",
+                "expiresDate": "",
+                "ended": "",
+                "started": ""
+              }
+            ],
+            "count": ""
+          },
+          "endpoint": ""
+        }
+      ]
+    },
+    {
+      "title": "Get Associated Domains",
+      "operation": "get_associated_domains",
+      "description": "Retrieves all domains that are related to a hostname you input.",
+      "annotation": "get_associated_domains",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "Host",
+          "type": "text",
+          "name": "host",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:google.com",
+          "tooltip": "Specify the hostname for which you are requesting associated domains",
+          "description": "Specify the hostname for which you are requesting associated domains."
+        }
+      ],
+      "output_schema": [
+        {
+          "records": [
+            {
+              "alexa_rank": "",
+              "whois": {
+                "createdDate": "",
+                "registrar": "",
+                "expiresDate": ""
+              },
+              "mail_provider": [],
+              "hostname": "",
+              "host_provider": [],
+              "computed": {
+                "company_name": ""
+              }
+            }
+          ],
+          "meta": {
+            "max_page": "",
+            "total_pages": "",
+            "query": "",
+            "page": ""
+          },
+          "record_count": "",
+          "endpoint": ""
+        }
+      ]
+    },
+    {
+      "title": "Get WHOIS History",
+      "operation": "get_whois_history",
+      "description": "Provides historical WHOIS information about the specified domain",
+      "annotation": "get_whois_history",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "Host",
+          "type": "text",
+          "name": "host",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:google.com",
+          "tooltip": "Specify the hostname for which you are requesting historical WHOIS information",
+          "description": "Specify the hostname for which you are requesting historical WHOIS information"
+        }
+      ],
+      "output_schema": [
+        {
+          "endpoint": "",
+          "result": {
+            "count": "",
+            "items": []
+          }
+        }
+      ]
+    },
+    {
+      "title": "Get IPs Neighbors",
+      "operation": "get_ips_neighbors",
+      "description": "Returns neighboring IP addresses within a specified IP range, enabling exploration of nearby IP addresses",
+      "annotation": "get_ips_neighbors",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "IP Address",
+          "type": "text",
+          "name": "ip_address",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:8.8.8.8",
+          "tooltip": "Specify the IP Address for which you are returns neighboring IP addresses within a specified IP range",
+          "description": "Specify the IP Address for which you are returns neighboring IP addresses within a specified IP range"
+        }
+      ],
+      "output_schema": [
+        {
+          "blocks": [
+            {
+              "active_egress": "",
+              "hostnames": [],
+              "ip": "",
+              "ports": [],
+              "sites": ""
+            }
+          ],
+          "endpoint": ""
+        }
+      ]
+    },
+    {
+      "title": "Get Whois IPs",
+      "operation": "get_whois_ips",
+      "description": "Fetch current IP information for a single IPv4 address",
+      "annotation": "get_whois_ips",
+      "category": "investigation",
+      "parameters": [
+        {
+          "title": "IP Address",
+          "type": "text",
+          "name": "ip_address",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "e.g:8.8.8.8",
+          "tooltip": "Specify the IPv4 address you want to fetch the WHOIS for single IPv4 address",
+          "description": "Specify the IPv4 address you want to fetch the WHOIS for single IPv4 address"
+        }
+      ],
+      "output_schema": [
+        {
+          "endpoint": "",
+          "result": {
+            "count": "",
+            "items": []
+          }
+        }
+      ]
+    }
+  ]
 }
