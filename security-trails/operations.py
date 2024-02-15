@@ -41,7 +41,7 @@ class SecurityTrails(object):
             else:
                 logger.error('Failed with response {0}'.format(response))
                 raise ConnectorError(
-                    {'status': 'Failure', 'status_code': str(response.status_code), 'response': response})
+                    {'status': 'Failure', 'status_code': str(response.status_code), 'response': response.json()})
         except Exception as e:
             logger.exception(str(e))
             raise ConnectorError(str(e))

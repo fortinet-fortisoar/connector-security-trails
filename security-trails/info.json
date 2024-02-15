@@ -19,7 +19,6 @@
         "required": true,
         "visible": true,
         "editable": true,
-        "value": "",
         "placeholder": "e.g: https://api.securitytrails.com or api.securitytrails.com",
         "tooltip": "Specify the URL of the shadow-server server to connect and perform automated operations."
       },
@@ -32,7 +31,6 @@
         "required": true,
         "visible": true,
         "editable": true,
-        "value": "",
         "placeholder": "e.g:D-l8D4uGEkj0I6u9hco-ONXLn0"
       },
       {
