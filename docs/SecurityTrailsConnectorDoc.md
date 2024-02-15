@@ -10,7 +10,7 @@
 
 <p>Authored By: spryIQ.co</p>
 
-Contributors: Derrick Gooch
+Contributors: Jitesh Rathod
 
 <p>Certified: No</p>
 
